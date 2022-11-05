@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | News homepage</title>
+
+  <style>
+    /*resets*/
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    img {
+      object-fit: contain;
+      box-shadow: 4px 10px 27px -8px rgba(158,158,158,0.75);
+    }
+    /*body*/
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+    body {
+      font-size: 15px;
+      margin: 4rem 8rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--Dark-grayish-blue);
+
+    }
+    /*Variables*/
+    :root {
+      --Off-white: hsl(36, 100%, 99%);
+      --Grayish-blue: hsl(233, 8%, 79%);
+      --Dark-grayish-blue: hsl(236, 13%, 42%);
+      --Very-dark-blue: hsl(240, 100%, 5%);
+      --Soft-orange: hsl(35, 77%, 62%);
+      --Soft-red: hsl(5, 85%, 63%);
+    }
+
+    /*Header*/
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .toggle {
+      display: none;
+    }
+    ul {
+      display: flex;
+      gap: 60px;
+    }
+    ul li, a {
+      list-style: none;
+      text-decoration: none;
+      color: var(--Dark-grayish-blue);
+      font-weight: 600;
+    }
+    a:hover {
+      cursor: pointer;
+      color: var(--Soft-orange);
+    }
+
+    /*Main*/
+    .main {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; 
+      grid-template-rows: 1fr 0.3fr; 
+      gap: 60px 30px;
+      grid-template-areas: 
+        "first first second"
+        "third third third";  
+    }
+    .first {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5;
+    gap: 20px 70px; 
+    grid-template-areas: 
+      "web web"
+      "title-web text-web"; 
+    grid-area: first; 
+  }
+  .web {
+     grid-area: web;
+     height: 100%;
+     }
+  .web img {
+    width: 100%;
+  }
+  .title-web { 
+    grid-area: title-web;
+    font-size: 40px;
+    color: var(--Very-dark-blue);
+    font-weight: 800;
+    line-height: 40px; 
+  }
+  .text-web { 
+    grid-area: text-web;
+  }
+  .text-web p {
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+  .text-web button {
+    background-color: var(--Soft-red);
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border: none;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--Off-white);
+    width: 50%;
+  }
+  .text-web button:hover {
+    background-color: var(--Very-dark-blue);
+    cursor: pointer;
+  }
+  .second { 
+    grid-area: second;
+    color: var(--Dark-grayish-blue);
+    background-color: var(--Very-dark-blue);
+    padding: 30px; 
+  }
+  .second h2 {
+    font-size: 30px;
+    color: var(--Soft-orange);
+  }
+  .second h3 {
+    color: var(--Off-white);
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .second h3:hover {
+    cursor: pointer;
+    color: var(--Soft-orange);
+  }
+  .second p {
+    margin-bottom: 20px;
+    line-height: 20px;
+  }
+  .news {
+    border-bottom: 1px var(--Dark-grayish-blue) solid;
+    padding: 20px 0;
+  }
+  .new3 {
+    padding-top: 20px;
+  }
+  .third {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px; 
+    grid-template-areas: 
+      "number1 number2 number3"; 
+    grid-area: third; 
+  }
+  .third img {
+    width: 20%;
+    float: left;
+    margin-right: 20px;
+  }
+  .number {
+    font-size: 30px;
+    color: var(--Grayish-blue);
+    font-weight: bold;
+  }
+  .third h3 {
+    color: var(--Very-dark-blue);
+    font-weight: 800;
+    margin-bottom: 5px;
+  }
+  .third h3:hover {
+    cursor: pointer;
+    color: var(--Soft-red);
+  }
+  .number1 { grid-area: number1; }
+  .number2 { grid-area: number2; }
+  .number3 { grid-area: number3; }
+  
+  /*attribution*/
+  .attribution {
+    text-align: right;
+    margin-top: 20px;
+  }
+
+  /*Responsive*/
+  @media (width <= 1100px) {
+
+    /*Main*/
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+  }
+  @media (max-width: 930px) {
+    body {
+      margin: 2rem;
+    }
+    /* Header */
+    .menu {
+      padding-top: 100px;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 1;
+      background: linear-gradient(to left, rgba(247,247,247,1) 50%, rgba(70,70,80,0.5) 50%);
+      transition: 0.4s ease all;
+    }
+    
+    ul {
+      flex-direction: column;
+      gap: 30px;
+      transform: translateX(50%);
+      padding-left: 20px;
+
+    }
+    .toggle {
+      display: flex;
+      z-index: 5;
+      align-items: center;
+      cursor: pointer;
+    }
+    .close {
+      display: none;
+    }
+    .open-nav {
+      opacity: 0;
+      
+    }
+    /*Main*/
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .first {
+      display: block;
+    }
+    .first p {
+      margin-top: 20px;
+    }
+    .first h1 {
+      margin-top: 20px;
+    }
+    .text-web button {
+      width: 40%;
+    }
+    .third {
+      display: flex;
+      flex-direction: column;
+    }
+    
+
+    
+  }
+    
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="assets/images/logo.svg" alt="logo">
+    </div>
+    <div class="toggle" role="button">
+      <img src="assets/images/icon-menu.svg" class="open" id="imgMenu" alt="menu burger">
+      <img src="assets/images/icon-menu-close.svg" class="close" alt="menu burger close">
+    </div>
+    <div class="menu open-nav">
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">New</a></li>
+        <li><a href="">Popular</a></li>
+        <li><a href="">Tranding</a></li>
+        <li><a href="">Categories</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="first">
+      <div class="web"><img src="assets/images/image-web-3-desktop.jpg" alt="illustrate article"></div>
+      <h1 class="title-web">The Bright Future of Web 3.0?</h1>
+      <div class="text-web">
+        <p> We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
+        But is it really fulfilling its promise?</p>
+        <button>Read more</button>
+      </div>
+    </section>
+
+    <section class="second">
+      <h2>New</h2>
+
+      <article class="news">
+        <h3>Hydrogen VS Electric Cars</h3>
+        <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+      </article> 
+
+      <article class="news">
+        <h3>The Downsides of AI Artistry</h3>
+        <p>What are the possible adverse effects of on-demand AI image generation?</p>
+      </article>
+
+      <article class="new3">
+        <h3>Is VC Funding Drying Up?</h3>
+        <p>Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+      </article>
+    
+    </section>
+
+    <section class="third">
+      <div class="number1">
+        <img src="assets/images/image-retro-pcs.jpg" alt="retro pc">
+        <p class="number">01</p>
+        <h3>Reviving Retro PCs</h3>
+        <p>What happens when old PCs are given modern upgrades?</p>
+
+      </div>
+      <div class="number2">
+        <img src="assets/images/image-top-laptops.jpg" alt="keyboard">
+        <p class="number">02</p>
+        <h3>Top 10 Laptops of 2022</h3>
+        <p>Our best picks for various needs and budgets.</p>
+      </div>
+
+      <div class="number3">
+        <img src="assets/images/image-gaming-growth.jpg" alt="remote play">
+        <p class="number">03</p>
+        <h3>The Growth of Gaming</h3>
+        <p>How the pandemic has sparked fresh opportunities.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Hatchino</a>.
+  </div>
+
+  <script>
+
+
+    const imgMenu = document.getElementById("imgMenu")
+
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const toggle = document.querySelector('.toggle');
+
+
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('open-nav');
+            if (menu.classList.contains('open-nav')) {
+              imgMenu.setAttribute("src", "assets/images/icon-menu.svg")
+            } else {
+              imgMenu.setAttribute("src", "assets/images/icon-menu-close.svg")
+          }
+      });
+    }
+    toggleMenu()
+
+  </script>
+</body>
+</html>
